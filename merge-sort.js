@@ -1,16 +1,22 @@
+arrayTest = [8,7,6,5,4,3,2,1]
+
 function mergeSort(array){
     if(array.length < 2) return;
-    let middle = array.length/2;
+    let middle;
+    if(array.length % 2 == 0){middle = array.length/2}
+    else {middle = Math.round(array.length/2)};
     let arrayLeft = [];
     let arrayRight = [];
     for(let i = 0; i<array.length; i++){
         if(i<middle){
             arrayLeft.push(array[i]);
         } else {
-            arrayRight.push(array[j]);
+            arrayRight.push(array[i]);
         }
     }
-
+    mergeSort(arrayLeft);
+    mergeSort(arrayRight);
+    merge(arrayLeft,arrayRight, array)
 }
 
 
@@ -39,4 +45,9 @@ function merge(arrayLeft, arrayRight, arrayResult){
         k++;
         j++;
     }
+    return arrayResult;
 }
+
+mergeSort(arrayTest)
+
+console.log(arrayTest)
